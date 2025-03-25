@@ -5,13 +5,13 @@
 // Function to encrypt text using XOR
 void encrypt(char text[], char key) {
     for (int i = 0; i < strlen(text); i++) {
-        text[i] = text[i] ^ key; // XOR operation
+        text[i] = text[i] ^ key;  // XOR operation
     }
 }
 
 // Function to decrypt text (XOR works both ways)
 void decrypt(char text[], char key) {
-    encrypt(text, key); // XOR again restores the original text
+    encrypt(text, key);  // XOR again restores the original text
 }
 
 // Function to save encrypted text to a file
@@ -31,7 +31,13 @@ int main() {
     char key;
 
     printf("🔐 Enter the text to encrypt: ");
-    fgets(message, sizeof(message), stdin); // Read full text
+    fgets(message, sizeof(message), stdin);  // Read full text
+
+    // Remove newline character if exists
+    size_t len = strlen(message);
+    if (len > 0 && message[len - 1] == '\n') {
+        message[len - 1] = '\0';
+    }
 
     printf("🔑 Enter the encryption key (single character): ");
     scanf(" %c", &key);
